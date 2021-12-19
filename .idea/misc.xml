@@ -4,6 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/User/Gravity/Libraries/ImageRadioButton/app/src/main/res/layout/activity_main.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/User/Gravity/Libraries/ImageRadioButton/image_radio_button/src/main/res/drawable/background_selector_preset_button.xml" value="0.2203125" />
+        <entry key="..\:/Users/User/Gravity/Libraries/ImageRadioButton/image_radio_button/src/main/res/drawable/background_shape_preset_button_pressed.xml" value="0.2203125" />
+        <entry key="..\:/Users/User/Gravity/Libraries/ImageRadioButton/image_radio_button/src/main/res/drawable/background_shape_preset_button_pressed_white.xml" value="0.2203125" />
+        <entry key="..\:/Users/User/Gravity/Libraries/ImageRadioButton/image_radio_button/src/main/res/drawable/background_shape_preset_time_button.xml" value="0.2203125" />
+        <entry key="..\:/Users/User/Gravity/Libraries/ImageRadioButton/image_radio_button/src/main/res/layout/image_radio_button.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

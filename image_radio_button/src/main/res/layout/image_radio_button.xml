@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText">
+
+    <ImageView
+        android:id="@+id/image_i"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="image"
+        android:gravity="center"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/text_t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/muli"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        tools:text="Math" />
+</LinearLayout>
