@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ImageRadioButtonDemo"
 include ':app'
+include ':image_radio_button'
