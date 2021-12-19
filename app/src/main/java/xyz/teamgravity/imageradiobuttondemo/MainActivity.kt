@@ -17,10 +17,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.gravityGroup.setOnCheckedChangeListener(object : GravityRadioGroup.OnCheckedChangeListener {
-            override fun onCheckedChanged(radioGroup: View, radioButton: View?, checked: Boolean, checkedId: Int) {
-                Toast.makeText(this@MainActivity, (radioButton as GravityImageRadioButton).text(), Toast.LENGTH_SHORT).show()
-            }
-        })
+        binding.gravityGroup.setOnCheckedChangeListener { _, radioButton, _, _ ->
+            Toast.makeText(this@MainActivity, (radioButton as GravityImageRadioButton).text(), Toast.LENGTH_SHORT).show()
+        }
     }
 }
