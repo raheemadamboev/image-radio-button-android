@@ -20,20 +20,23 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
 
     companion object {
         private val DEFAULT_PRESSED_BACKGROUND_PRESSED_ID = R.drawable.background_shape_preset_button_pressed
+        private const val DEFAULT_UNPRESSED_TEXT_COLOR = Color.BLACK
+        private const val DEFAULT_PRESSED_TEXT_COLOR = Color.WHITE
     }
 
-    private lateinit var textT: TextView
-    private lateinit var imageI: ImageView
+    private var textT: TextView? = null
+    private var imageI: ImageView? = null
 
     private var text = ""
+    private var unpressedTextColor = DEFAULT_UNPRESSED_TEXT_COLOR
+    private var pressedTextColor = DEFAULT_PRESSED_TEXT_COLOR
+
     private var image: Drawable? = null
+    private var imageResId = -1
 
-    private var drawableResId = -1
-    private var unpressedTextColor = Color.BLACK
-    private var pressedTextColor = Color.WHITE
     private var pressedBackgroundDrawable: Drawable? = null
-
     private var unpressedBackgroundDrawable: Drawable? = null
+
     private var myOnClickListener: OnClickListener? = null
     private var myOnTouchListener: OnTouchListener? = null
 
@@ -69,8 +72,8 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
         try {
             text = array.getString(R.styleable.GravityImageRadioButton_unpressedText) ?: ""
             image = array.getDrawable(R.styleable.GravityImageRadioButton_image)
-            unpressedTextColor = array.getColor(R.styleable.GravityImageRadioButton_unpressedTextColor, Color.BLACK)
-            pressedTextColor = array.getColor(R.styleable.GravityImageRadioButton_pressedTextColor, Color.WHITE)
+            unpressedTextColor = array.getColor(R.styleable.GravityImageRadioButton_unpressedTextColor, DEFAULT_UNPRESSED_TEXT_COLOR)
+            pressedTextColor = array.getColor(R.styleable.GravityImageRadioButton_pressedTextColor, DEFAULT_PRESSED_TEXT_COLOR)
             pressedBackgroundDrawable = array.getDrawable(R.styleable.GravityImageRadioButton_pressedBackgroundDrawable)
         } finally {
             array.recycle()
@@ -91,9 +94,9 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
     }
 
     private fun bindView() {
-        textT.setTextColor(unpressedTextColor)
-        textT.text = text
-        imageI.setImageDrawable(image)
+        textT?.setTextColor(unpressedTextColor)
+        textT?.text = text
+        imageI?.setImageDrawable(image)
     }
 
     override fun setOnClickListener(l: OnClickListener?) {
@@ -119,32 +122,32 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
         myOnClickListener?.onClick(this)
     }
 
-    fun setPressedState() {
+    private fun setPressedState() {
         if (pressedBackgroundDrawable == null) setBackgroundResource(DEFAULT_PRESSED_BACKGROUND_PRESSED_ID)
         else background = pressedBackgroundDrawable
 
-        textT.setTextColor(pressedTextColor)
+        textT?.setTextColor(pressedTextColor)
     }
 
-    fun setUnpressedState() {
+    private fun setUnpressedState() {
         background = unpressedBackgroundDrawable
-        textT.setTextColor(unpressedTextColor)
+        textT?.setTextColor(unpressedTextColor)
     }
 
     fun text() = text
 
     fun setText(text: String) {
         this.text = text
-        textT.text = text
+        textT?.text = text
     }
 
     fun setTextColor(@ColorRes color: Int) {
-        textT.setTextColor(ContextCompat.getColor(context, color))
+        textT?.setTextColor(ContextCompat.getColor(context, color))
     }
 
     fun setImageResource(@DrawableRes imageResId: Int) {
-        drawableResId = imageResId
-        imageI.setImageResource(drawableResId)
+        this.imageResId = imageResId
+        imageI?.setImageResource(this.imageResId)
     }
 
     override fun addOnCheckedChangeListener(listener: GravityRadioCheckable.OnCheckedChangeListener) {

@@ -100,9 +100,9 @@ class GravityRadioGroup : LinearLayout {
         return p is LayoutParams
     }
 
-    fun clearCheck() = check(View.NO_ID)
+    private fun clearCheck() = check(View.NO_ID)
 
-    fun check(@IdRes id: Int) {
+    private fun check(@IdRes id: Int) {
         if (id != View.NO_ID && id == radioButtonCheckedId) return // don't even bother
         if (radioButtonCheckedId != View.NO_ID) setCheckedStateForView(radioButtonCheckedId, false)
         if (id != View.NO_ID) setCheckedStateForView(id, true)
