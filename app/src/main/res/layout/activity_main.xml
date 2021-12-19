@@ -6,13 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <xyz.teamgravity.imageradiobutton.GravityRadioGroup
+        android:id="@+id/gravity_group"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_margin="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <xyz.teamgravity.imageradiobutton.GravityImageRadioButton
+            android:id="@+id/android_b"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="20dp"
+            app:image="@drawable/android"
+            app:pressedBackgroundDrawable="@drawable/background_shape_preset_button_pressed"
+            app:pressedTextColor="@color/white"
+            app:unpressedText="Android"
+            app:unpressedTextColor="@color/black" />
+
+        <xyz.teamgravity.imageradiobutton.GravityImageRadioButton
+            android:id="@+id/java_b"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="20dp"
+            app:image="@drawable/tea"
+            app:pressedBackgroundDrawable="@drawable/background_shape_preset_button_pressed"
+            app:pressedTextColor="@color/white"
+            app:unpressedText="Java"
+            app:unpressedTextColor="@color/black" />
+
+        <xyz.teamgravity.imageradiobutton.GravityImageRadioButton
+            android:id="@+id/kotlin_b"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="20dp"
+            app:image="@drawable/kotlin"
+            app:pressedBackgroundDrawable="@drawable/background_shape_preset_button_pressed"
+            app:pressedTextColor="@color/white"
+            app:unpressedText="Kotlin"
+            app:unpressedTextColor="@color/black" />
+    </xyz.teamgravity.imageradiobutton.GravityRadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -133,7 +133,7 @@ class GravityRadioGroup : LinearLayout {
 
     fun onCheckedChangeListener() = onCheckedChangeListener
 
-    interface OnCheckedChangeListener {
+    fun interface OnCheckedChangeListener {
         fun onCheckedChanged(radioGroup: View, radioButton: View?, checked: Boolean, checkedId: Int)
     }
 

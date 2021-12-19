@@ -9,7 +9,7 @@ interface GravityRadioCheckable : Checkable {
 
     fun removeOnCheckedChangeListener(listener: OnCheckedChangeListener)
 
-    interface OnCheckedChangeListener {
+    fun interface OnCheckedChangeListener {
         fun onCheckedChange(radioButton: View, checked: Boolean)
     }
 }
