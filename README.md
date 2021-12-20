@@ -64,8 +64,18 @@ Add **GravityImageRadioButton** inside the **GravityRadioGroup** and set **compu
 
 ## Demo application
 
-<img src="https://github.com/raheemadamboev/image-radio-button-android/blob/master/background.gif" alt="sample" title="sample" width="440" height="456" align="left" vspace="24" />
+<img src="https://github.com/raheemadamboev/image-radio-button-android/blob/master/background.gif" alt="sample" title="sample" width="440" height="456" align="left" vspace="60" />
 
 Programming pictures are placed with the help of this library in this demo application. When radio button clicked, its text gets shown in Toast.
 
 <a href="https://github.com/raheemadamboev/image-radio-button-android/blob/master/app-debug.apk">Download demo</a>
+
+## Projects using this library
+
+**GoTest** 80 000+ downloads in <a href="https://play.google.com/store/apps/details?id=xyz.teamgravity.gotest">Google Play Store</a>
+
+**Buxgalteriya schyotlar rejasi** 5 000+ downloads in <a href="https://play.google.com/store/apps/details?id=xyz.teamgravity.uzbekistanaccountingcode">Google Play Store</a>
+
+**Irregular Verbs**  1 000+ downloads in <a href="https://play.google.com/store/apps/details?id=xyz.teamgravity.irregularverbs">Google Play Store</a>
+
+...
