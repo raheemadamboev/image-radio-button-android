@@ -20,5 +20,7 @@ class MainActivity : AppCompatActivity() {
         binding.gravityGroup.setOnCheckedChangeListener { _, radioButton, _, _ ->
             Toast.makeText(this@MainActivity, (radioButton as GravityImageRadioButton).text(), Toast.LENGTH_SHORT).show()
         }
+
+        //binding.androidB.setTextColor(R.color.white)
     }
 }

@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <xyz.teamgravity.imageradiobutton.GravityImageRadioButton
@@ -23,8 +23,10 @@
             android:padding="20dp"
             app:image="@drawable/android"
             app:pressedBackgroundDrawable="@drawable/background_shape_preset_button_pressed"
+            app:pressedImageTint="@color/white"
             app:pressedTextColor="@color/white"
-            app:unpressedText="Android"
+            app:text="Android"
+            app:unpressedImageTint="@color/black"
             app:unpressedTextColor="@color/black" />
 
         <xyz.teamgravity.imageradiobutton.GravityImageRadioButton
@@ -36,7 +38,7 @@
             app:image="@drawable/tea"
             app:pressedBackgroundDrawable="@drawable/background_shape_preset_button_pressed"
             app:pressedTextColor="@color/white"
-            app:unpressedText="Java"
+            app:text="Java"
             app:unpressedTextColor="@color/black" />
 
         <xyz.teamgravity.imageradiobutton.GravityImageRadioButton
@@ -48,7 +50,7 @@
             app:image="@drawable/kotlin"
             app:pressedBackgroundDrawable="@drawable/background_shape_preset_button_pressed"
             app:pressedTextColor="@color/white"
-            app:unpressedText="Kotlin"
+            app:text="Kotlin"
             app:unpressedTextColor="@color/black" />
     </xyz.teamgravity.imageradiobutton.GravityRadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

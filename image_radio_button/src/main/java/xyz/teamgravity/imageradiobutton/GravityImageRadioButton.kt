@@ -1,6 +1,7 @@
 package xyz.teamgravity.imageradiobutton
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -15,6 +16,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.core.widget.ImageViewCompat
 
 class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
 
@@ -33,6 +35,8 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
 
     private var image: Drawable? = null
     private var imageResId = -1
+    private var unpressedImageTint = -1
+    private var pressedImageTint = -1
 
     private var pressedBackgroundDrawable: Drawable? = null
     private var unpressedBackgroundDrawable: Drawable? = null
@@ -70,10 +74,12 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
     private fun parseAttrs(attrs: AttributeSet) {
         val array = context.obtainStyledAttributes(attrs, R.styleable.GravityImageRadioButton, 0, 0)
         try {
-            text = array.getString(R.styleable.GravityImageRadioButton_unpressedText) ?: ""
+            text = array.getString(R.styleable.GravityImageRadioButton_text) ?: ""
             image = array.getDrawable(R.styleable.GravityImageRadioButton_image)
             unpressedTextColor = array.getColor(R.styleable.GravityImageRadioButton_unpressedTextColor, DEFAULT_UNPRESSED_TEXT_COLOR)
             pressedTextColor = array.getColor(R.styleable.GravityImageRadioButton_pressedTextColor, DEFAULT_PRESSED_TEXT_COLOR)
+            unpressedImageTint = array.getColor(R.styleable.GravityImageRadioButton_unpressedImageTint, -1)
+            pressedImageTint = array.getColor(R.styleable.GravityImageRadioButton_pressedImageTint, -1)
             pressedBackgroundDrawable = array.getDrawable(R.styleable.GravityImageRadioButton_pressedBackgroundDrawable)
         } finally {
             array.recycle()
@@ -97,6 +103,11 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
         textT?.setTextColor(unpressedTextColor)
         textT?.text = text
         imageI?.setImageDrawable(image)
+        if (unpressedImageTint != -1) {
+            imageI?.let {
+                ImageViewCompat.setImageTintList(it, ColorStateList.valueOf(ContextCompat.getColor(context, unpressedImageTint)))
+            }
+        }
     }
 
     override fun setOnClickListener(l: OnClickListener?) {
@@ -127,11 +138,21 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
         else background = pressedBackgroundDrawable
 
         textT?.setTextColor(pressedTextColor)
+        if (pressedImageTint != -1) {
+            imageI?.let {
+                ImageViewCompat.setImageTintList(it, ColorStateList.valueOf(ContextCompat.getColor(context, pressedImageTint)))
+            }
+        }
     }
 
     private fun setUnpressedState() {
         background = unpressedBackgroundDrawable
         textT?.setTextColor(unpressedTextColor)
+        if (unpressedImageTint != -1) {
+            imageI?.let {
+                ImageViewCompat.setImageTintList(it, ColorStateList.valueOf(ContextCompat.getColor(context, unpressedImageTint)))
+            }
+        }
     }
 
     fun text() = text
