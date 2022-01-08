@@ -26,7 +26,6 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
         private const val DEFAULT_PRESSED_TEXT_COLOR = Color.WHITE
         private const val DEFAULT_UNPRESSED_IMAGE_TINT = Color.TRANSPARENT
         private const val DEFAULT_PRESSED_IMAGE_TINT = Color.TRANSPARENT
-        private const val NO_ID = -1
     }
 
     private var textT: TextView? = null
@@ -37,7 +36,6 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
     private var pressedTextColor = DEFAULT_PRESSED_TEXT_COLOR
 
     private var image: Drawable? = null
-    private var imageResId = NO_ID
     private var unpressedImageTint = Color.TRANSPARENT
     private var pressedImageTint = Color.TRANSPARENT
 
@@ -170,8 +168,7 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
     }
 
     fun setImageResource(@DrawableRes imageResId: Int) {
-        this.imageResId = imageResId
-        imageI?.setImageResource(this.imageResId)
+        imageI?.setImageResource(imageResId)
     }
 
     override fun addOnCheckedChangeListener(listener: GravityRadioCheckable.OnCheckedChangeListener) {
