@@ -21,9 +21,12 @@ import androidx.core.widget.ImageViewCompat
 class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
 
     companion object {
-        private val DEFAULT_PRESSED_BACKGROUND_PRESSED_ID = R.drawable.background_shape_preset_button_pressed
+        private val DEFAULT_PRESSED_BACKGROUND_PRESSED_ID = R.drawable.background_pressed
         private const val DEFAULT_UNPRESSED_TEXT_COLOR = Color.BLACK
         private const val DEFAULT_PRESSED_TEXT_COLOR = Color.WHITE
+        private const val DEFAULT_UNPRESSED_IMAGE_TINT = Color.TRANSPARENT
+        private const val DEFAULT_PRESSED_IMAGE_TINT = Color.TRANSPARENT
+        private const val NO_ID = -1
     }
 
     private var textT: TextView? = null
@@ -34,9 +37,9 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
     private var pressedTextColor = DEFAULT_PRESSED_TEXT_COLOR
 
     private var image: Drawable? = null
-    private var imageResId = -1
-    private var unpressedImageTint = -1
-    private var pressedImageTint = -1
+    private var imageResId = NO_ID
+    private var unpressedImageTint = Color.TRANSPARENT
+    private var pressedImageTint = Color.TRANSPARENT
 
     private var pressedBackgroundDrawable: Drawable? = null
     private var unpressedBackgroundDrawable: Drawable? = null
@@ -72,15 +75,15 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
     }
 
     private fun parseAttrs(attrs: AttributeSet) {
-        val array = context.obtainStyledAttributes(attrs, R.styleable.GravityImageRadioButton, 0, 0)
+        val array = context.obtainStyledAttributes(attrs, R.styleable.GravityImageRadioButton)
         try {
-            text = array.getString(R.styleable.GravityImageRadioButton_text) ?: ""
-            image = array.getDrawable(R.styleable.GravityImageRadioButton_image)
-            unpressedTextColor = array.getColor(R.styleable.GravityImageRadioButton_unpressedTextColor, DEFAULT_UNPRESSED_TEXT_COLOR)
-            pressedTextColor = array.getColor(R.styleable.GravityImageRadioButton_pressedTextColor, DEFAULT_PRESSED_TEXT_COLOR)
-            unpressedImageTint = array.getColor(R.styleable.GravityImageRadioButton_unpressedImageTint, -1)
-            pressedImageTint = array.getColor(R.styleable.GravityImageRadioButton_pressedImageTint, -1)
-            pressedBackgroundDrawable = array.getDrawable(R.styleable.GravityImageRadioButton_pressedBackgroundDrawable)
+            text = array.getString(R.styleable.GravityImageRadioButton_girbText) ?: ""
+            unpressedTextColor = array.getColor(R.styleable.GravityImageRadioButton_girbUnpressedTextColor, DEFAULT_UNPRESSED_TEXT_COLOR)
+            pressedTextColor = array.getColor(R.styleable.GravityImageRadioButton_girbPressedTextColor, DEFAULT_PRESSED_TEXT_COLOR)
+            image = array.getDrawable(R.styleable.GravityImageRadioButton_girbImage)
+            unpressedImageTint = array.getColor(R.styleable.GravityImageRadioButton_girbUnpressedImageTint, DEFAULT_UNPRESSED_IMAGE_TINT)
+            pressedImageTint = array.getColor(R.styleable.GravityImageRadioButton_girbPressedImageTint, DEFAULT_PRESSED_IMAGE_TINT)
+            pressedBackgroundDrawable = array.getDrawable(R.styleable.GravityImageRadioButton_girbPressedBackgroundDrawable)
         } finally {
             array.recycle()
         }
@@ -103,11 +106,7 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
         textT?.setTextColor(unpressedTextColor)
         textT?.text = text
         imageI?.setImageDrawable(image)
-        if (unpressedImageTint != -1) {
-            imageI?.let {
-                ImageViewCompat.setImageTintList(it, ColorStateList.valueOf(ContextCompat.getColor(context, unpressedImageTint)))
-            }
-        }
+        bindUnpressedImageTint()
     }
 
     override fun setOnClickListener(l: OnClickListener?) {
@@ -138,20 +137,24 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
         else background = pressedBackgroundDrawable
 
         textT?.setTextColor(pressedTextColor)
-        if (pressedImageTint != -1) {
-            imageI?.let {
-                ImageViewCompat.setImageTintList(it, ColorStateList.valueOf(ContextCompat.getColor(context, pressedImageTint)))
-            }
-        }
+        bindPressedImageTint()
     }
 
     private fun setUnpressedState() {
         background = unpressedBackgroundDrawable
         textT?.setTextColor(unpressedTextColor)
-        if (unpressedImageTint != -1) {
-            imageI?.let {
-                ImageViewCompat.setImageTintList(it, ColorStateList.valueOf(ContextCompat.getColor(context, unpressedImageTint)))
-            }
+        bindUnpressedImageTint()
+    }
+
+    private fun bindUnpressedImageTint() {
+        if (unpressedImageTint != DEFAULT_UNPRESSED_IMAGE_TINT) {
+            imageI?.let { ImageViewCompat.setImageTintList(it, ColorStateList.valueOf(unpressedImageTint)) }
+        }
+    }
+
+    private fun bindPressedImageTint() {
+        if (pressedImageTint != DEFAULT_PRESSED_IMAGE_TINT) {
+            imageI?.let { ImageViewCompat.setImageTintList(it, ColorStateList.valueOf(pressedImageTint)) }
         }
     }
 

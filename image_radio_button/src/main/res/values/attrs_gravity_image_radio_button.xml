@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="GravityImageRadioButton">
-        <attr name="text" format="string" />
-        <attr name="unpressedTextColor" format="color" />
-        <attr name="pressedTextColor" format="color" />
-        <attr name="image" format="reference" />
-        <attr name="pressedImageTint" format="color" />
-        <attr name="unpressedImageTint" format="color" />
-        <attr name="pressedBackgroundDrawable" format="reference" />
+        <attr name="girbText" format="string" />
+        <attr name="girbUnpressedTextColor" format="color" />
+        <attr name="girbPressedTextColor" format="color" />
+        <attr name="girbImage" format="reference" />
+        <attr name="girbPressedImageTint" format="color" />
+        <attr name="girbUnpressedImageTint" format="color" />
+        <attr name="girbPressedBackgroundDrawable" format="reference" />
     </declare-styleable>
 </resources>
