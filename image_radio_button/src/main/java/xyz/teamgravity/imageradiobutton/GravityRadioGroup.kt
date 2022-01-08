@@ -47,7 +47,7 @@ class GravityRadioGroup : LinearLayout {
     private fun parseAttrs(attrs: AttributeSet) {
         val array = context.obtainStyledAttributes(attrs, R.styleable.GravityRadioGroup, 0, 0)
         try {
-            radioButtonCheckedId = array.getResourceId(R.styleable.GravityRadioGroup_radioButtonCheckedId, View.NO_ID)
+            radioButtonCheckedId = array.getResourceId(R.styleable.GravityRadioGroup_grgRadioButtonCheckedId, View.NO_ID)
         } finally {
             array.recycle()
         }
