@@ -19,7 +19,7 @@ allprojects {
 
 Include below dependency in build.gradle of application and sync it:
 ```groovy
-implementation 'com.github.raheemadamboev:image-radio-button-android:1.0.2'
+implementation 'com.github.raheemadamboev:image-radio-button-android:1.0.4'
 ```
 
 Add **GravityRadioGroup** to your XML layout:
@@ -38,16 +38,15 @@ Add **GravityImageRadioButton** inside the **GravityRadioGroup** and set **compu
  >
 
 <xyz.teamgravity.imageradiobutton.GravityImageRadioButton
-            android:id="@+id/android_b"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="20dp"
-            app:image="@drawable/android"
-            app:pressedBackgroundDrawable="@drawable/background_shape_preset_button_pressed"
-            app:pressedTextColor="@color/white"
-            app:unpressedText="Android"
-            app:unpressedTextColor="@color/black" />
+	android:id="@+id/android_b"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="20dp"
+        app:girbImage="@drawable/android"
+        app:girbPressedTextColor="@color/white"
+        app:girbText="Android"
+        app:girbUnpressedTextColor="?attr/colorPrimary" />
             
 </xyz.teamgravity.imageradiobutton.GravityRadioGroup>
 ```
@@ -56,11 +55,15 @@ Add **GravityImageRadioButton** inside the **GravityRadioGroup** and set **compu
 
 | Attribute                             | Type          | Usage                                                                |
 | --------------------------------------| ------------- | -------------------------------------------------------------------- |
-| `app:image`                           | drawable      | Image drawable that is shown                                         |
-| `app:pressedBackgroundDrawable`       | drawable      | Drawable that is shown when radio button is pressed/checked          |
-| `app:pressedTextColor`                | color         | Color of text when radio button is pressed/checked                   |
-| `app:unpressedText`                   | string        | String to display in text                                            |
-| `app:unpressedTextColor`              | color         | Regular color of text when radio button is not pressed/checked       | 
+| `app:girbText`                        | string        | String to display                                        	       |
+| `app:girbUnpressedTextColor`          | color         | Color of text when radio button is unpressed/unchecked               |
+| `app:girbPressedTextColor`            | color         | Color of text when radio button is pressed/checked                   |
+| `app:girbImage`                       | drawable      | Image drawable to display                                            |
+| `app:girbUnpressedImageTint`          | color         | Tint color of image when radio button is unpressed/unchecked         | 
+| `app:girbPressedImageTint`            | color         | Tint color of image when radio button is pressed/checked             | 
+| `app:girbPressedBackgroundDrawable`   | drawable      | Background drawable when radio button is pressed/checked             | 
+
+_If you don't want to set tint to ImageView of RadioButton, just don't set_ `app:girbUnpressedImageTint` _and_ `app:girbPressedImageTint` _attributes in XML!_
 
 ## Demo application
 
