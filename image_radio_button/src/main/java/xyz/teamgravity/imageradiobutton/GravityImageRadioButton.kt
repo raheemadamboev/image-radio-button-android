@@ -146,15 +146,15 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
         bindUnpressedImageTint()
     }
 
-    private fun bindUnpressedImageTint() {
-        if (unpressedImageTint != DEFAULT_UNPRESSED_IMAGE_TINT) {
-            imageI?.let { ImageViewCompat.setImageTintList(it, ColorStateList.valueOf(unpressedImageTint)) }
-        }
-    }
-
     private fun bindPressedImageTint() {
         if (pressedImageTint != DEFAULT_PRESSED_IMAGE_TINT) {
             imageI?.let { ImageViewCompat.setImageTintList(it, ColorStateList.valueOf(pressedImageTint)) }
+        }
+    }
+
+    private fun bindUnpressedImageTint() {
+        if (unpressedImageTint != DEFAULT_UNPRESSED_IMAGE_TINT) {
+            imageI?.let { ImageViewCompat.setImageTintList(it, ColorStateList.valueOf(unpressedImageTint)) }
         }
     }
 
