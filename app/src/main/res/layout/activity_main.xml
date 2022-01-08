@@ -21,13 +21,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="20dp"
-            app:image="@drawable/android"
-            app:pressedBackgroundDrawable="@drawable/background_shape_preset_button_pressed"
-            app:pressedImageTint="@color/white"
-            app:pressedTextColor="@color/white"
-            app:text="Android"
-            app:unpressedImageTint="@color/black"
-            app:unpressedTextColor="@color/black" />
+            app:girbImage="@drawable/android"
+            app:girbPressedTextColor="@color/white"
+            app:girbText="Android"
+            app:girbUnpressedTextColor="?attr/colorPrimary" />
 
         <xyz.teamgravity.imageradiobutton.GravityImageRadioButton
             android:id="@+id/java_b"
@@ -35,11 +32,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="20dp"
-            app:image="@drawable/tea"
-            app:pressedBackgroundDrawable="@drawable/background_shape_preset_button_pressed"
-            app:pressedTextColor="@color/white"
-            app:text="Java"
-            app:unpressedTextColor="@color/black" />
+            app:girbImage="@drawable/kotlin"
+            app:girbPressedTextColor="@color/white"
+            app:girbText="Kotlin"
+            app:girbUnpressedTextColor="?attr/colorPrimary" />
 
         <xyz.teamgravity.imageradiobutton.GravityImageRadioButton
             android:id="@+id/kotlin_b"
@@ -47,10 +43,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="20dp"
-            app:image="@drawable/kotlin"
-            app:pressedBackgroundDrawable="@drawable/background_shape_preset_button_pressed"
-            app:pressedTextColor="@color/white"
-            app:text="Kotlin"
-            app:unpressedTextColor="@color/black" />
+            app:girbImage="@drawable/tea"
+            app:girbPressedTextColor="@color/white"
+            app:girbText="Java"
+            app:girbUnpressedTextColor="?attr/colorPrimary" />
     </xyz.teamgravity.imageradiobutton.GravityRadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>
