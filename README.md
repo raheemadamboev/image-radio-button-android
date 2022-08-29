@@ -1,10 +1,15 @@
-# image-radio-button-android
-Beautiful custom radio button with image functionality
+<h1 align="center">Image Radio Button</h1>
 
-[![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
-[![](https://jitpack.io/v/raheemadamboev/image-radio-button-android.svg)](https://jitpack.io/#raheemadamboev/image-radio-button-android)
+<p align="center">
+  <a href="http://developer.android.com/index.html"><img alt="Android" src="https://img.shields.io/badge/platform-android-green.svg"/></a>
+  <a href="https://jitpack.io/#raheemadamboev/image-radio-button-android"><img alt="Version" src="https://jitpack.io/v/raheemadamboev/image-radio-button-android.svg"/></a>
+  <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
+  <a href="https://android-arsenal.com/api?level=21"><img alt="API" src="https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat"/></a>
+</p>
 
-Light library that adds image to a beautiful custom radio button. You can easily add image to radio button. Integration is very easy and many popular Android applications are using this library.
+<p align="center">
+📻 Light library that is beautiful custom radio button with image functionality. You can easily add image to radio button. Integration is very easy.
+</p>
 
 ## How To use
 
@@ -30,7 +35,7 @@ Add **GravityRadioGroup** to your XML layout:
         android:orientation="horizontal">
 ```
 
-Add **GravityImageRadioButton** inside the **GravityRadioGroup** and set **compulsory** attributes below:
+Add **GravityImageRadioButton** inside the **GravityRadioGroup** and set **required** attributes below:
 
 ```xml
 <xyz.teamgravity.imageradiobutton.GravityRadioGroup
@@ -67,9 +72,11 @@ _If you don't want to set tint to ImageView of RadioButton, just don't set_ `app
 
 ## Demo application
 
-<img src="https://github.com/raheemadamboev/image-radio-button-android/blob/master/background.gif" alt="sample" title="sample" width="440" height="456" align="left" vspace="60" />
+<p align="center">
+  <img width="440" height="456 src="https://github.com/raheemadamboev/image-radio-button-android/blob/master/background.gif" />
+</p>
 
-Programming pictures are placed with the help of this library in this demo application. When radio button clicked, its text gets shown in Toast.
+Programming pictures are placed with the help of this library in this demo application. When radio button is clicked, its text gets shown via Toast.
 
 <a href="https://github.com/raheemadamboev/image-radio-button-android/blob/master/app-debug.apk">Download demo</a>
 
