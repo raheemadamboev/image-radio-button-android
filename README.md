@@ -11,7 +11,7 @@
 📻 Light library that is beautiful custom radio button with image functionality. You can easily add image to radio button. Integration is very easy.
 </p>
 
-## How To use
+# Setup
 
 Add it in your root **build.gradle** at the end of repositories:
 ```groovy
@@ -26,6 +26,7 @@ Include below dependency in build.gradle of application and sync it:
 ```groovy
 implementation 'com.github.raheemadamboev:image-radio-button-android:1.0.4'
 ```
+# Implementation
 
 Add **GravityRadioGroup** to your XML layout:
 ```xml
@@ -56,7 +57,7 @@ Add **GravityImageRadioButton** inside the **GravityRadioGroup** and set **requi
 </xyz.teamgravity.imageradiobutton.GravityRadioGroup>
 ```
 
-**Attributes:**
+# Attributes
 
 | Attribute                             | Type          | Usage                                                                |
 | --------------------------------------| ------------- | -------------------------------------------------------------------- |
@@ -70,17 +71,17 @@ Add **GravityImageRadioButton** inside the **GravityRadioGroup** and set **requi
 
 _If you don't want to set tint to ImageView of RadioButton, just don't set_ `app:girbUnpressedImageTint` _and_ `app:girbPressedImageTint` _attributes in XML!_
 
-## Demo application
+# Demo
 
 <p align="center">
-  <img width="440" height="456 src="https://github.com/raheemadamboev/image-radio-button-android/blob/master/background.gif" />
+  <img width="440" height="456" src="https://github.com/raheemadamboev/image-radio-button-android/blob/master/background.gif" />
 </p>
 
 Programming pictures are placed with the help of this library in this demo application. When radio button is clicked, its text gets shown via Toast.
 
 <a href="https://github.com/raheemadamboev/image-radio-button-android/blob/master/app-debug.apk">Download demo</a>
 
-## Projects using this library
+# Projects using this library
 
 **GoTest** 120 000+ downloads in <a href="https://play.google.com/store/apps/details?id=xyz.teamgravity.gotest">Google Play Store</a>
 
