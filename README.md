@@ -24,7 +24,7 @@ allprojects {
 
 Include below dependency in build.gradle of application and sync it:
 ```groovy
-implementation 'com.github.raheemadamboev:image-radio-button-android:1.0.5'
+implementation 'com.github.raheemadamboev:image-radio-button-android:1.0.6'
 ```
 # Implementation
 
