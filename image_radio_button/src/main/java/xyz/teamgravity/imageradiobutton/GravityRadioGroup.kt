@@ -127,7 +127,7 @@ class GravityRadioGroup : LinearLayout {
         return LayoutParams(context, attrs)
     }
 
-    fun setOnCheckedChangeListener(onCheckedChangeListener: OnCheckedChangeListener) {
+    fun setOnCheckedChangeListener(onCheckedChangeListener: OnCheckedChangeListener?) {
         this.onCheckedChangeListener = onCheckedChangeListener
     }
 
