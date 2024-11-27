@@ -4,18 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:orientation="vertical"
-    tools:ignore="HardcodedText">
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/image_i"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:contentDescription="image"
+        android:contentDescription="@null"
         android:gravity="center"
         android:scaleType="centerCrop" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_t"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
