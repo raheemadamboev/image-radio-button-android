@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -14,18 +13,17 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
-import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
 
 class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
 
-    companion object {
-        private val DEFAULT_PRESSED_BACKGROUND_PRESSED_ID = R.drawable.background_pressed
-        private const val DEFAULT_UNPRESSED_TEXT_COLOR = Color.BLACK
-        private const val DEFAULT_PRESSED_TEXT_COLOR = Color.WHITE
-        private const val DEFAULT_UNPRESSED_IMAGE_TINT = Color.TRANSPARENT
-        private const val DEFAULT_PRESSED_IMAGE_TINT = Color.TRANSPARENT
+    private companion object {
+        val DEFAULT_PRESSED_BACKGROUND_PRESSED_ID = R.drawable.background_pressed
+        const val DEFAULT_UNPRESSED_TEXT_COLOR = Color.BLACK
+        const val DEFAULT_PRESSED_TEXT_COLOR = Color.WHITE
+        const val DEFAULT_UNPRESSED_IMAGE_TINT = Color.TRANSPARENT
+        const val DEFAULT_PRESSED_IMAGE_TINT = Color.TRANSPARENT
     }
 
     private var textT: TextView? = null
@@ -59,13 +57,11 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
         setupView()
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     constructor(context: Context, attrs: AttributeSet, defaultStyleAttrs: Int) : super(context, attrs, defaultStyleAttrs) {
         parseAttrs(attrs)
         setupView()
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     constructor(context: Context, attrs: AttributeSet, defaultStyleAttrs: Int, defaultStyleRes: Int)
             : super(context, attrs, defaultStyleAttrs, defaultStyleRes) {
         parseAttrs(attrs)
@@ -107,27 +103,8 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
         bindUnpressedImageTint()
     }
 
-    override fun setOnClickListener(l: OnClickListener?) {
-        myOnClickListener = l
-    }
-
     private fun setCustomTouchListener() {
         super.setOnTouchListener(TouchListener())
-    }
-
-    override fun setOnTouchListener(l: OnTouchListener?) {
-        myOnTouchListener = l
-    }
-
-    fun onTouchListener() = myOnTouchListener
-
-    fun onTouchDown(motionEvent: MotionEvent) {
-        isChecked = true
-    }
-
-    fun onTouchUp(motionEvent: MotionEvent) {
-        // handle user defined click listeners
-        myOnClickListener?.onClick(this)
     }
 
     private fun setPressedState() {
@@ -156,7 +133,26 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
         }
     }
 
-    fun text() = text
+    ///////////////////////////////////////////////////////////////////////////
+    // API
+    ///////////////////////////////////////////////////////////////////////////
+
+    fun onTouchListener(): OnTouchListener? {
+        return myOnTouchListener
+    }
+
+    fun onTouchDown(motionEvent: MotionEvent) {
+        isChecked = true
+    }
+
+    fun onTouchUp(motionEvent: MotionEvent) {
+        // handle user defined click listeners
+        myOnClickListener?.onClick(this)
+    }
+
+    fun text(): String {
+        return text
+    }
 
     fun setText(text: String) {
         this.text = text
@@ -169,6 +165,18 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
 
     fun setImageResource(@DrawableRes imageResId: Int) {
         imageI?.setImageResource(imageResId)
+    }
+
+    fun setCheckable(checkable: Boolean) {
+        myCheckable = checkable
+    }
+
+    override fun setOnClickListener(l: OnClickListener?) {
+        myOnClickListener = l
+    }
+
+    override fun setOnTouchListener(l: OnTouchListener?) {
+        myOnTouchListener = l
     }
 
     override fun addOnCheckedChangeListener(listener: GravityRadioCheckable.OnCheckedChangeListener) {
@@ -202,12 +210,11 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
         isChecked = !myChecked
     }
 
-    fun setCheckable(checkable: Boolean) {
-        myCheckable = checkable
-    }
+    ///////////////////////////////////////////////////////////////////////////
+    // MISC
+    ///////////////////////////////////////////////////////////////////////////
 
     private inner class TouchListener : OnTouchListener {
-
         override fun onTouch(v: View?, event: MotionEvent?): Boolean {
             when (event?.action) {
                 MotionEvent.ACTION_DOWN -> onTouchDown(event)
