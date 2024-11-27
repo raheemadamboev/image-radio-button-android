@@ -8,24 +8,27 @@
 </p>
 
 <p align="center">
-📻 Light library that is beautiful custom radio button with image functionality. You can easily add image to radio button. Integration is very easy.
+📻 <b>ImageRadioButtonAndroid</b> is a light library for custom radio button with image functionality. You can easily add image to radio button. Integration is very easy.
 </p>
 
 # Setup
 
-Add it in your root **build.gradle** at the end of repositories:
-```groovy
-allprojects {
+Add the maven library bucket to the `dependencyResolutionManagement.repositories` block in `settings.gradle.kts` file as follows:
+```kotlin
+dependencyResolutionManagement {
+  ...
   repositories {
-    maven { url 'https://jitpack.io' }
+    ...
+    maven("https://jitpack.io")
   }
 }
-```  
-
-Include below dependency in build.gradle of application and sync it:
-```groovy
-implementation 'com.github.raheemadamboev:image-radio-button-android:1.0.7'
 ```
+
+Install the library to the project in desired module's `build.gradle.kts` file. Replace `<current_version>` with the actual version:
+```kotlin
+implementation("com.github.raheemadamboev:image-radio-button-android:<current_version>")
+```
+
 # Implementation
 
 Add **GravityRadioGroup** to your XML layout:
@@ -74,20 +77,20 @@ _If you don't want to set tint to ImageView of RadioButton, just don't set_ `app
 # Demo
 
 <p align="center">
-  <img width="440" height="456" src="https://github.com/raheemadamboev/image-radio-button-android/blob/master/background.gif" />
+  <img width="440" height="456" src="https://github.com/raheemadamboev/image-radio-button-android/blob/master/extra/banner.gif" />
 </p>
 
 Programming pictures are placed with the help of this library in this demo application. When radio button is clicked, its text gets shown via Toast.
 
-<a href="https://github.com/raheemadamboev/image-radio-button-android/blob/master/app-debug.apk">Download demo</a>
+<a href="https://github.com/raheemadamboev/image-radio-button-android/blob/master/extra/app-debug.apk">Download demo</a>
 
 # Projects using this library
 
-**GoTest** 150 000+ downloads in <a href="https://play.google.com/store/apps/details?id=xyz.teamgravity.gotest">Google Play Store</a>
+**GoTest** 250 000+ downloads in <a href="https://play.google.com/store/apps/details?id=xyz.teamgravity.gotest">Google Play Store</a>
 
-**Buxgalteriya schyotlar rejasi** 20 000+ downloads in <a href="https://play.google.com/store/apps/details?id=xyz.teamgravity.uzbekistanaccountingcode">Google Play Store</a>
+**Buxgalteriya schyotlar rejasi** 50 000+ downloads in <a href="https://play.google.com/store/apps/details?id=xyz.teamgravity.uzbekistanaccountingcode">Google Play Store</a>
 
-**Irregular Verbs**  20 000+ downloads in <a href="https://play.google.com/store/apps/details?id=xyz.teamgravity.irregularverbs">Google Play Store</a>
+**Irregular Verbs**  25 000+ downloads in <a href="https://play.google.com/store/apps/details?id=xyz.teamgravity.irregularverbs">Google Play Store</a>
 
 # License
 
