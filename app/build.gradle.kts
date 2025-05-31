@@ -25,7 +25,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = libs.versions.java.target.get()
+        jvmTarget = libs.versions.jvm.target.get()
     }
 
     buildFeatures {
