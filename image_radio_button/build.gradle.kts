@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.library)
     alias(libs.plugins.kotlin)
-    `maven-publish`
+    id("maven-publish")
 }
 
 android {
@@ -22,7 +22,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = libs.versions.java.target.get()
+        jvmTarget = libs.versions.jvm.target.get()
     }
 
     packaging {
@@ -51,15 +51,15 @@ dependencies {
     implementation(libs.material)
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            register<MavenPublication>("release") {
-                from(components["release"])
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.github.raheemadamboev"
+            artifactId = "image-radio-button-android"
+            version = "1.0.9"
 
-                groupId = "com.github.raheemadamboev"
-                artifactId = "image-radio-button-android"
-                version = "1.0.8"
+            afterEvaluate {
+                from(components["release"])
             }
         }
     }
