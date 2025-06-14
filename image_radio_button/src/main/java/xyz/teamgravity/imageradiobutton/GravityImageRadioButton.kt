@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
@@ -18,12 +19,33 @@ import androidx.core.widget.ImageViewCompat
 
 class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
 
-    private companion object {
-        val DEFAULT_PRESSED_BACKGROUND_PRESSED_ID = R.drawable.background_pressed
-        const val DEFAULT_UNPRESSED_TEXT_COLOR = Color.BLACK
-        const val DEFAULT_PRESSED_TEXT_COLOR = Color.WHITE
-        const val DEFAULT_UNPRESSED_IMAGE_TINT = Color.TRANSPARENT
-        const val DEFAULT_PRESSED_IMAGE_TINT = Color.TRANSPARENT
+    companion object {
+        private val DEFAULT_PRESSED_BACKGROUND_PRESSED_ID = R.drawable.background_pressed
+        private const val DEFAULT_UNPRESSED_TEXT_COLOR = Color.BLACK
+        private const val DEFAULT_PRESSED_TEXT_COLOR = Color.WHITE
+        private const val DEFAULT_UNPRESSED_IMAGE_TINT = Color.TRANSPARENT
+        private const val DEFAULT_PRESSED_IMAGE_TINT = Color.TRANSPARENT
+
+        fun create(
+            context: Context,
+            text: String = "",
+            @ColorInt unpressedTextColor: Int = DEFAULT_UNPRESSED_TEXT_COLOR,
+            @ColorInt pressedTextColor: Int = DEFAULT_PRESSED_TEXT_COLOR,
+            image: Drawable? = null,
+            @ColorInt unpressedImageTint: Int = DEFAULT_UNPRESSED_IMAGE_TINT,
+            @ColorInt pressedImageTint: Int = DEFAULT_PRESSED_IMAGE_TINT,
+            pressedBackgroundDrawable: Drawable? = null
+        ): GravityImageRadioButton {
+            val view = GravityImageRadioButton(context)
+            view.text = text
+            view.unpressedTextColor = unpressedTextColor
+            view.pressedTextColor = pressedTextColor
+            view.image = image
+            view.unpressedImageTint = unpressedImageTint
+            view.pressedImageTint = pressedImageTint
+            view.pressedBackgroundDrawable = pressedBackgroundDrawable
+            return view
+        }
     }
 
     private var textT: TextView? = null
