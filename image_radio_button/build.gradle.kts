@@ -56,7 +56,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.github.raheemadamboev"
             artifactId = "image-radio-button-android"
-            version = "1.0.10"
+            version = "1.0.11"
 
             afterEvaluate {
                 from(components["release"])
