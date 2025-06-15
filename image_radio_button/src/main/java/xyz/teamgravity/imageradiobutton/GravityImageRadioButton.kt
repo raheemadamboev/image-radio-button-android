@@ -44,6 +44,7 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
             view.unpressedImageTint = unpressedImageTint
             view.pressedImageTint = pressedImageTint
             view.pressedBackgroundDrawable = pressedBackgroundDrawable
+            view.bindView()
             return view
         }
     }
