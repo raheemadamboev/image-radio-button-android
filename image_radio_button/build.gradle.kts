@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.library)
     alias(libs.plugins.kotlin)
@@ -21,8 +23,12 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = libs.versions.jvm.target.get()
+    kotlin {
+        target {
+            compilerOptions {
+                jvmTarget = JvmTarget.JVM_17
+            }
+        }
     }
 
     packaging {
@@ -56,7 +62,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.github.raheemadamboev"
             artifactId = "image-radio-button-android"
-            version = "1.0.11"
+            version = "1.0.12"
 
             afterEvaluate {
                 from(components["release"])
