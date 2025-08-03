@@ -49,6 +49,7 @@ dependencies {
 
     // image radio button
     implementation(projects.imageRadioButton)
+//    implementation("com.github.raheemadamboev:image-radio-button-android:1.0.12")
 
     // core
     implementation(libs.core)
