@@ -1,14 +1,16 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.library)
-    alias(libs.plugins.kotlin)
     id("maven-publish")
 }
 
 android {
     namespace = "xyz.teamgravity.imageradiobutton"
-    compileSdk = libs.versions.sdk.compile.get().toInt()
+
+    compileSdk {
+        version = release(libs.versions.sdk.compile.get().toInt()) {
+            minorApiLevel = 0
+        }
+    }
 
     defaultConfig {
         minSdk = libs.versions.sdk.min.get().toInt()
@@ -19,22 +21,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlin {
-        target {
-            compilerOptions {
-                jvmTarget = JvmTarget.JVM_17
-            }
-        }
-    }
-
-    packaging {
-        resources {
-            pickFirsts.add("META-INF/atomicfu.kotlin_module")
-        }
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     publishing {
@@ -46,7 +34,6 @@ android {
 }
 
 dependencies {
-
     // core
     implementation(libs.core)
 
@@ -62,7 +49,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.github.raheemadamboev"
             artifactId = "image-radio-button-android"
-            version = "1.0.12"
+            version = "1.0.13"
 
             afterEvaluate {
                 from(components["release"])

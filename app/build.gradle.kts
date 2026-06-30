@@ -1,13 +1,15 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.android)
-    alias(libs.plugins.kotlin)
 }
 
 android {
     namespace = "xyz.teamgravity.imageradiobuttondemo"
-    compileSdk = libs.versions.sdk.compile.get().toInt()
+
+    compileSdk {
+        version = release(libs.versions.sdk.compile.get().toInt()) {
+            minorApiLevel = 0
+        }
+    }
 
     defaultConfig {
         applicationId = "xyz.teamgravity.imageradiobuttondemo"
@@ -15,33 +17,15 @@ android {
         targetSdk = libs.versions.sdk.target.get().toInt()
         versionCode = 1
         versionName = "1.0.0"
-
-        vectorDrawables {
-            useSupportLibrary = true
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlin {
-        target {
-            compilerOptions {
-                jvmTarget = JvmTarget.JVM_17
-            }
-        }
     }
 
     buildFeatures {
         viewBinding = true
     }
 
-    packaging {
-        resources {
-            pickFirsts.add("META-INF/atomicfu.kotlin_module")
-        }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 }
 
