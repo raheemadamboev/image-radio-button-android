@@ -1,16 +1,15 @@
 [versions]
 
-core = "1.16.0"
+core = "1.19.0"
 appcompat = "1.7.1"
-material = "1.12.0"
+material = "1.14.0"
 constraintlayout = "2.2.1"
 
-android = "8.12.0"
-kotlin = "2.2.0"
+android = "9.2.1"
 
 sdk-min = "21"
-sdk-compile = "36"
-sdk-target = "36"
+sdk-compile = "37"
+sdk-target = "37"
 
 [libraries]
 
@@ -23,4 +22,3 @@ constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayo
 
 android = { id = "com.android.application", version.ref = "android" }
 library = { id = "com.android.library", version.ref = "android" }
-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
