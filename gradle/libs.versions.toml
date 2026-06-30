@@ -7,7 +7,7 @@ constraintlayout = "2.2.1"
 
 android = "9.2.1"
 
-sdk-min = "21"
+sdk-min = "23"
 sdk-compile = "37"
 sdk-target = "37"
 
