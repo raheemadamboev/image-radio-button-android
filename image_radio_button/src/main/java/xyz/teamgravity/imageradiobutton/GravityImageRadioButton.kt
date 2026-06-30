@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewConfiguration
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -16,6 +17,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
+import kotlin.math.abs
 
 class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
 
@@ -68,6 +70,10 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
 
     private var myChecked = false
     private var myCheckable = true
+    private var isScrolling = false
+    private var touchDownX = 0F
+    private var touchDownY = 0F
+    private var touchSlop = 0
 
     private val onCheckedChangeListeners = ArrayList<GravityRadioCheckable.OnCheckedChangeListener>()
 
@@ -110,6 +116,7 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
         inflateView()
         bindView()
         setCustomTouchListener()
+        touchSlop = ViewConfiguration.get(context).scaledTouchSlop
     }
 
     private fun inflateView() {
@@ -159,19 +166,6 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
     ///////////////////////////////////////////////////////////////////////////
     // API
     ///////////////////////////////////////////////////////////////////////////
-
-    fun onTouchListener(): OnTouchListener? {
-        return myOnTouchListener
-    }
-
-    fun onTouchDown(motionEvent: MotionEvent) {
-        isChecked = true
-    }
-
-    fun onTouchUp(motionEvent: MotionEvent) {
-        // handle user defined click listeners
-        myOnClickListener?.onClick(this)
-    }
 
     fun text(): String {
         return text
@@ -238,10 +232,31 @@ class GravityImageRadioButton : RelativeLayout, GravityRadioCheckable {
     ///////////////////////////////////////////////////////////////////////////
 
     private inner class TouchListener : OnTouchListener {
+
         override fun onTouch(v: View?, event: MotionEvent?): Boolean {
             when (event?.action) {
-                MotionEvent.ACTION_DOWN -> onTouchDown(event)
-                MotionEvent.ACTION_UP -> onTouchUp(event)
+                MotionEvent.ACTION_DOWN -> {
+                    touchDownX = event.x
+                    touchDownY = event.y
+                    isScrolling = false
+                }
+
+                MotionEvent.ACTION_MOVE -> {
+                    if (!isScrolling && (abs(event.x - touchDownX) > touchSlop || abs(event.y - touchDownY) > touchSlop)) {
+                        isScrolling = true
+                    }
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    if (!isScrolling) {
+                        isChecked = true
+                        myOnClickListener?.onClick(this@GravityImageRadioButton)
+                    }
+                }
+
+                MotionEvent.ACTION_CANCEL -> {
+                    isScrolling = false
+                }
             }
 
             myOnTouchListener?.onTouch(v, event)
